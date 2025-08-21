@@ -1,260 +1,344 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>‎‎~</title>
-<link rel="icon" type="image/x-icon" href="img/Hellgrim.png">
-
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
-
-  .row {display: flex;}
-  .column {flex: 50%; margin: 10px;}
-    
-  .search-container {
-    margin: auto;
-    width: 600px;
-    border-style: none;
-  }
-    
-  input[type=text] {
-    height: 24px;
-    width: 98.7%;
-    font-family: "Google Sans Code";
-    color: #aaa;
-    text-align: center;
-    background: #2a2a2a;
-    border-radius: 10px;
-    border-style: none;
-    padding: 5px;
-  }
-    
-  input[type=text]:focus {
-    outline: none;
-    background: #2e2e2e;
-  }
-
-	body {
-    	background-color: #222;
-      font-family: "Google Sans Code";
-      font-size: 19px;
-      margin-top: 20px;
-      margin-left: 100px;
-    }
-    
-	c {
-	    font-size: 13px;
-    	color: grey;
-    	font-weight:bold;
-    }
-    
-	a {
-    	color: #ef5350;
-    	border-radius: 30px;
-      text-decoration: none;
-      position: relative;
+  <head>
+    <title>‎‎~</title>
+    <link rel="icon" type="image/x-icon" href="img/Hellgrim.png">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&display=swap');
       
-      padding: 14px;
-      line-height: 45px;
-      margin-left: -15px;
+      .row {
+        display: flex;
+      }
       
-      transition: 1.5s;
-      transition-timing-function: ease-out;
-      top: 0px;
-    }
+      .column {
+        flex: 50%;
+        margin-right: 50px;
+      }
+      
+      .search-container {
+        margin: auto;
+        width: 600px;
+        border-style: none;
+      }
+      
+      input[type=text] {
+        height: 24px;
+        width: 100%;
+        background: #2a2a2a;
+        border-radius: 10px;
+        border-style: none;
+        padding: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        
+        font-family: "Google Sans Code";
+        font-size: 16px;
+        color: #aaa;
+        text-align: center;
+      }
+      
+      input[type=text]:focus {
+        outline: none;
+        background: #2e2e2e;
+      }
+      
+      body {
+        opacity: 0;
+        animation: fade 0.5s forwards;
+        
+        background-color: #222;
+        font-family: "Google Sans Code";
+        font-size: 19px;
+        margin-top: -20px;
+        margin-left: 100px;
+        margin-right: 100px;
+      }
+      
+      c {
+        font-size: 13px;
+        color: grey;
+        font-weight:bold;
+      }
+      
+      .link {
+        color: #ef5350;
+        border-radius: 30px;
+        text-decoration: none;
+        position: relative;
+        padding: 14px;
+        line-height: 45px;
+        margin-left: -15px;
+        transition: 1.5s;
+        transition-timing-function: ease-out;
+        top: 0px;
+      }
+      
+      .link:hover {
+        background: #ef535033;
+        text-shadow: 0 0 30px #ef5350;
+        transition: 0.2s;
+        top: -10px;
+      }
+      
+      .multi-link {
+        position: absolute;
+        top: 0px;
+        left: 20px;
+        height: 24px;
+        width: 24px;
+        text-align: center;
+        margin: auto;
+        
+        font-size: 64px;
+        color: #222222;
+        text-decoration: none;
+        padding: 14px;
+        
+        transition: 1s;
+        cursor: pointer;
+      }
+      
+      .multi-link:hover {
+        text-shadow: 0 0 10px #fff, 0 0 30px #fff, 0 0 60px #fff, 0 0 120px #fff;
+        transition: 0.1s;
+      }
+      
+      t {
+        color: #ef5350;
+        opacity: 0.75;
+      }
+      
+      p {
+        margin-right: 10px;
+      }
+      
+      img {
+        position: absolute;
+        display: block;
+        margin-left: -256px;
+        margin-right: -256px;
+        left: 50%;
+        right: 50%;
+        opacity: 0.05;
+        
+        animation-name: float;
+        animation-duration: 3s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+      }
+      
+      @keyframes float {
+        0% {top: 40.5%;}
+        50% {top: 39.5%;}
+        100% {top: 40.5%;}
+      }
+      
+      @keyframes fade {
+        to {opacity: 1; margin-top: 20px;}
+      }
+    </style>
     
-    a:hover {
-    	background: #ef535033;
-    	text-shadow: 0 0 30px #ef5350;
-    	transition: 0.2s;
-      top: -10px;
-    }
+    <script>
+      var myLinks = [
+        "https://www.youtube.com/feed/subscriptions",
+        "https://www.instagram.com/",
+        "https://www.facebook.com/messages",
+        "https://bsky.app/",
+        "https://twitter.com/",
+        "https://outlook.live.com/",
+      ]
+
+      function openMultipleLinks(links) {
+        for (var i = 0; i < links.length; i ++) {
+          window.open(links[i]);
+        }
+      }
+    </script>
+  </head>
+
+
+
+  <body>
+    <!-- SEARCH BAR -->
+    <div class="search-container">
+      <form action="https://www.google.com/search">
+        <input type="text" placeholder="" name="q" autofocus>
+      </form>
+    </div>
     
-    img {
-    	position: absolute;
-    	display: block;
-  		margin: auto;
-  		left: 40%;
-  		right: 40%;
-  		width: 256px;
-  		opacity: 0.05;
-      animation-name: float;
-      animation-duration: 3s;
-      animation-iteration-count: infinite;
-      animation-timing-function: ease-in-out;
-      text-shadow: 0 0 50px #000;
-	  }
+    <!-- BACKGROUND IMAGE -->
+    <img src="img/Hellgrim.png">
     
-    @keyframes float {
-    	0% {top: 40.5%;}
-      50% {top: 39.5%;}
-      100% {top: 40.5%;}
-    }
-
-</style>
-</head>
-
-
-<body>
-
-<!-- SEARCH BAR -->
-<div class="search-container">
-    <form action="https://www.google.com/search">
-      <input type="text" placeholder="" name="q" autofocus>
-    </form>
-</div>
-
-<!-- BACKGROUND IMAGE -->
-<img src="img/Hellgrim.png">
-
-<!-- COLUMNS -->
-<div class="row">
-    <!-- COLUMN 1 ---------------------------------------------------->
-    <div class="column">
+    <!-- OPEN SEVERAL LINKS -->
+    <a class="multi-link" id="multi-link-opener" onclick="openMultipleLinks(myLinks)">✣</a>
+    
+    <!-- COLUMNS -->
+    <div class="row">
+      <!-- COLUMN 1 ---------------------------------------------------->
+      <div class="column">
         <p>
-	        <c>Socials</c> <br>
-	        <a href="https://twitter.com/">Twitter</a>
-	        <a href="https://bsky.app/">Bsky</a>
-          	<a href="https://www.facebook.com/messages">Messenger</a>
-          	<a href="https://www.instagram.com/">Instagram</a>
-        </p>
-        
-        <p>
-	        <br> <c>Services</c> <br>
-	        <a href="https://outlook.live.com/">Outlook</a>       
-         	<a href="https://mail.google.com/mail/u/1/#inbox">Gmail</a>
-         	<a href="https://mail.zoho.eu/zm/#mail/views/unread">Zoho Mail</a>
-         	<br>
-         	<a href="https://drive.google.com/drive/my-drive">Google Drive</a>
-         	<a href="https://www.google.fr/maps/place/72310+Bess%C3%A9-sur-Braye/@47.8192932,0.6959301,12240m/data=!3m2!1e3!4b1!4m5!3m4!1s0x47e31953a01bbe4d:0x903c60924f833279!8m2!3d47.833387!4d0.753144">Google Maps</a>
-        </p>
-        
-        <p>
-	        <br> <c>Administration</c> <br>
-	        <a href="https://cfspart.impots.gouv.fr/monprofil-webapp/monCompte">Impots Gouv</a>
-	        <a href="https://www.francetravail.fr/accueil/">France Travail</a>
-	        <a href="https://www.caf.fr/">CAF</a>
-	        <br>
-	        <a href="https://particulier.edf.fr/fr/accueil/espace-client/tableau-de-bord.html">EDF</a>
-	        <a href="https://www.toutsurmoneau.fr/mon-compte-en-ligne/tableau-de-bord">Suez</a>
-	        <a href="https://subscribe.free.fr/login/">Free</a>
-	        <a href="https://mobile.free.fr/account/v2/login">Free Mobile</a>
-	        <a href="http://mafreebox.freebox.fr/">Freebox OS</a>
-        </p>
-        
-        <p>
-          <br> <c>Work</c> <br>
-          <a href="https://mabanque.bnpparibas/fr/connexion">BNP Paribas</a>
+          <c>Socials</c>
           <br>
-          <a href="https://vgen.co/creator/commissions">Vgen</a>
-          <a href="https://www.autoentrepreneur.urssaf.fr/portail/accueil.html">URSSAF</a>
-          <br>
-          <a href="https://www.paypal.com/fr/signin">Paypal</a>
-          <a href="https://www.paypal.com/invoice/s/estimate/manage">Estimate</a>
+          <a class="link" href="https://twitter.com/">Twitter</a>
+          <a class="link" href="https://bsky.app/">Bsky</a>
+          <a class="link" href="https://www.facebook.com/messages">Messenger</a>
+          <a class="link" href="https://www.instagram.com/">Instagram</a>
         </p>
-        
         <p>
-          <br> <c>Buy</c> <br>
-          <a href="https://www.amazon.fr/gp/css/homepage.html?ref_=nav_youraccount_btn">Amazon</a>
-          <a href="https://www.ebay.fr/">eBay</a>
-          <a href="https://www.leboncoin.fr/">LeBonCoin</a>
-          <a href="https://www.etsy.com/fr/">Etsy</a>
-          <a href="https://www.vinted.fr/">Vinted</a>
+          <br> 
+          <c>Services</c>
+          <br>
+          <a class="link" href="https://outlook.live.com/">Outlook</a>       
+          <a class="link" href="https://mail.google.com/mail/u/1/#inbox">Gmail</a>
+          <a class="link" href="https://mail.zoho.eu/zm/#mail/views/unread">Zoho Mail</a>
+          <br>
+          <a class="link" href="https://drive.google.com/drive/my-drive">Google Drive</a>
+          <a class="link" href="https://www.google.fr/maps/@46.9665863,2.2870401,1102109m/data=!3m1!1e3?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D">Google Maps</a>
         </p>
+        <p>
+          <br> 
+          <c>Administration</c>
+          <br>
+          <a class="link" href="https://mabanque.bnpparibas/fr/connexion">BNP Paribas</a>
+          <br>
+          <a class="link" href="https://cfspart.impots.gouv.fr/monprofil-webapp/monCompte">Impots</a>
+          <a class="link" href="https://www.francetravail.fr/accueil/">France Travail</a>
+          <a class="link" href="https://www.caf.fr/">CAF</a>
+          <br>
+          <a class="link" href="https://particulier.edf.fr/fr/accueil/espace-client/tableau-de-bord.html">EDF</a>
+          <a class="link" href="https://www.toutsurmoneau.fr/mon-compte-en-ligne/tableau-de-bord">Suez</a>
+          <br>
+          <a class="link" href="https://subscribe.free.fr/login/">Free</a>
+          <a class="link" href="https://mobile.free.fr/account/v2/login">Free Mobile</a>
+          <a class="link" href="http://mafreebox.freebox.fr/">Freebox OS</a>
+        </p>
+        <p>
+          <br> 
+          <c>Work</c>
+          <br>
+          <a class="link" href="https://vgen.co/creator/commissions">Vgen</a>
+          <a class="link" href="https://www.autoentrepreneur.urssaf.fr/portail/accueil.html">URSSAF</a>
+          <a class="link" href="https://www.paypal.com/fr/signin">Paypal</a>
+          <a class="link" href="https://www.paypal.com/invoice/s/estimate/manage">Estimate</a>
+        </p>
+        <p>
+          <br> 
+          <c>Buy</c>
+          <br>
+          <a class="link" href="https://www.amazon.fr/gp/css/homepage.html?ref_=nav_youraccount_btn">Amazon</a>
+          <a class="link" href="https://www.ebay.fr/">eBay</a>
+          <a class="link" href="https://www.leboncoin.fr/">LeBonCoin</a>
+          <a class="link" href="https://www.etsy.com/fr/">Etsy</a>
+          <a class="link" href="https://www.vinted.fr/">Vinted</a>
+        </p>
+      </div>
+      <!-- COLUMN 2 ---------------------------------------------------->
+      <div class="column">
+        <p>
+          <c>Medias</c>
+          <br>
+          <a class="link" href="https://www.youtube.com/feed/subscriptions">Youtube</a>
+          <a class="link" href="https://www.twitch.tv/">Twitch</a>
+          <a class="link" href="https://www.justwatch.com/fr">JustWatch</a>
+          <a class="link" href="https://bandcamp.com/">Bandcamp</a>
+        </p>
+        <p>
+          <c>Downloads</c>
+          <br>
+          <a class="link" href="https://www.yggtorrent.top/">YGG</a>
+          <a class="link" href="https://www.darkino.space/">Darkino</a>
+          <a class="link" href="https://cobalt.tools/">Cobalt.tools</a>
+          <br>
+          <a class="link" href="https://cgpersia.com/">CG Persia</a>
+          <a class="link" href="https://plugintorrent.com/">Plugin Torrent</a>
+          <br>
+          <a class="link" href="https://fitgirl-repacks.site/">FitGirl</a>
+          <a class="link" href="https://www.emugen.net/console/switch/?orderby=title&order=asc">Emugen</a>
+          <a class="link" href="https://downloads.khinsider.com/">Khinsider</a>
+        </p>
+        <p>
+          <c>Miscellaneous</c>
+          <br>
+          <a class="link" href="https://www.catsuka.com/">Catsuka</a>
+          <a class="link" href="http://www.nautiljon.com">Nautiljon</a>
+          <a class="link" href="https://www.songsterr.com">Songsterr</a>
+          <a class="link" href="https://fr.gravatar.com">Gravatar</a>
+          <a class="link" href="https://www.schema-electrique.net/index.html">ZoomElec</a>
+        </p>
+      </div>
+      <!-- COLUMN 3 ---------------------------------------------------->
+      <div class="column">
+        <p>
+          <c>Game Development</c>
+          <br>
+          <a class="link" href="https://github.com/AndyLobjois">GitHub</a>
+          <a class="link" href="https://andy-hellgrim.itch.io/">itchi.io</a>
+          <br>
+          <a class="link" href="https://superhivemarket.com/">SuperHive</a>
+          <a class="link" href="https://app.gumroad.com/dashboard">Gumroad</a>
+          <a class="link" href="https://www.blendswap.com/">Blendswap</a>
+        </p>
+        <p>
+          <c>Documentation</c>
+          <br>
+          <t>Blender</t> 
+          <a class="link" href="https://docs.blender.org/api/current/index.html">API</a>
+          <a class="link" href="https://docs.blender.org/manual/en/latest/index.html">Manual</a>
+          <br>
+          <t>Godot</t>
+          <a class="link" href="https://docs.godotengine.org/en/4.4/classes/index.html">API</a>
+          <a class="link" href="https://docs.godotengine.org/en/4.4/tutorials/best_practices/index.html">Manual</a>
+          <br>
+          <t>Unity</t>
+          <a class="link" href="https://docs.unity3d.com/ScriptReference/">API</a>
+          <a class="link" href="https://docs.unity3d.com/Manual/index.html">Manual</a>
+          <a class="link" href="https://assetstore.unity.com/">Asset Store</a>
+          <a class="link" href="https://catlikecoding.com/unity/tutorials/">Shaders</a>
+          <br>
+          <a class="link" href="https://develop.games/">PirateSoftware Guide</a>
+        </p>
+        <p>
+          <c>Resources</c>
+          <br>
+          <a class="link" href="https://www.models-resource.com/">ModelsResource</a>
+          <a class="link" href="https://sketchfab.com/">Sketchfab</a>
+          <a class="link" href="https://www.archive3d.net/">Archive3D</a>
+          <a class="link" href="https://free3d.com/">Free3D</a>
+          <a class="link" href="https://www.renderhub.com/xps-3d-models">RenderHub</a>
+          <a class="link" href="https://www.thebasemesh.com/model-library">TheBaseMesh</a>
+          <br>
+          <t>PolyHaven</t>
+          <a class="link" href="https://polyhaven.com/models">Models</a>
+          <a class="link" href="https://polyhaven.com/textures">Textures</a>
+          <a class="link" href="https://polyhaven.com/hdris">HDRI</a>
+          <br>
+          <a class="link" href="https://www.deviantart.com">DeviantArt</a>
+          <a class="link" href="https://redketchup.io/icon-converter">Icon Converter</a>
+          <a class="link" href="https://font.download/">Font.Download</a>
+          <br>
+          <a class="link" href="https://www.metmuseum.org/art/metpublications/">Met Museum</a>
+          <a class="link" href="https://gallica.bnf.fr/accueil/fr/content/accueil-fr?mode=desktop">Gallica</a>
+          <br>
+          <a class="link" href="https://freesound.org/">Freesound</a>
+        </p>
+      </div>
+      <!-- COLUMN 4 ---------------------------------------------------->
+      <div class="column">
+        <p>
+          <br> 
+          <c>Team Reptile</c>
+          <br>
+          <t>LLB</t>
+          <a class="link" href="https://lethal-league-blaze.thunderstore.io/">Thunderstore</a>
+          <a class="link" href="https://gamebanana.com/games/6746">Gamebanana</a>
+          <br>
+          <t>BRC</t>
+          <a class="link" href="https://thunderstore.io/c/bomb-rush-cyberfunk/">Thunderstore</a>
+          <a class="link" href="https://gamebanana.com/games/18955">Gamebanana</a>
+          <br>
+          <a class="link" href="https://challonge.com/">Challonge</a>
+        </p>
+      </div>
     </div>
-
-    <!-- COLUMN 2 ---------------------------------------------------->
-    <div class="column">
-        <p>
-          <br> <c>Medias</c> <br>
-          <a href="https://www.youtube.com/feed/subscriptions">Youtube</a>
-          <a href="https://www.twitch.tv/">Twitch</a>
-          <a href="https://www.justwatch.com/fr">JustWatch</a>
-          <a href="https://bandcamp.com/">Bandcamp</a>
-        </p>
-        
-        <p>
-          <br> <c>Downloads</c> <br>
-          <a href="https://www.ygg.re/">YGG</a>
-          <a href="https://www.darkino.space/">Darkino</a>
-          <a href="https://cobalt.tools/">Cobalt.tools</a>
-          <br>
-          <a href="https://cgpersia.com/">CG Persia</a>
-          <a href="https://plugintorrent.com/">Plugin Torrent</a>
-          <br>
-          <a href="https://fitgirl-repacks.site/">FitGirl Repacks</a>
-          <a href="https://www.emugen.net/console/switch/?orderby=title&order=asc">Switch Archives</a>
-          <a href="https://downloads.khinsider.com/">Video Game Music</a>
-        </p>
-
-        <p>
-          <br> <c>Miscellaneous</c> <br>
-          <a href="https://www.catsuka.com/">Catsuka</a>
-          <a href="http://www.nautiljon.com">Nautiljon</a>
-          <a href="https://www.songsterr.com">Songsterr</a>
-          <a href="https://fr.gravatar.com">Gravatar</a>
-          <a href="https://www.schema-electrique.net/index.html">Zoom-Elec</a>
-        </p>
-    </div>
-
-    <!-- COLUMN 3 ---------------------------------------------------->
-    <div class="column">
-        <p>
-          <br> <c>Game Development</c> <br>
-          <a href="https://github.com/AndyLobjois">GitHub</a>
-          <a href="https://andy-hellgrim.itch.io/">itchi.io</a>
-          <a href="https://superhivemarket.com/">SuperHive</a>
-          <a href="https://app.gumroad.com/dashboard">Gumroad</a>
-        </p>
-
-        <p>
-          <br> <c>Documentation</c> <br>
-          <a href="https://docs.blender.org/api/current/index.html">Blender API</a>
-          <a href="https://docs.blender.org/manual/en/latest/index.html">Manual</a>
-          <br>
-          <a href="https://docs.unity3d.com/ScriptReference/">Unity API</a>
-          <a href="https://docs.unity3d.com/Manual/index.html">Manual</a>
-          <a href="https://assetstore.unity.com/">Asset Store</a>
-          <a href="https://catlikecoding.com/unity/tutorials/">Shaders</a>
-          <br>
-          <a href="https://develop.games/">PirateSoftware Guide</a>
-        </p>
-
-        <p>
-          <br> <c>Resources</c> <br>
-          <a href="https://www.models-resource.com/">ModelsResource</a>
-          <a href="https://sketchfab.com/">Sketchfab</a>
-          <a href="https://www.archive3d.net/">Archive3D</a>
-          <a href="https://free3d.com/">Free3D</a>
-          <a href="https://www.renderhub.com/xps-3d-models">RenderHub</a>
-          <a href="https://www.thebasemesh.com/model-library">TheBaseMesh</a>
-          <a href="https://www.blendswap.com/">Blendswap</a>
-          <br>
-          <a href="https://polyhaven.com/models">PolyHaven - Models</a>
-		  <a href="https://polyhaven.com/textures">Textures</a>
-		  <a href="https://polyhaven.com/hdris">HDRI</a>
-          <a href="https://www.deviantart.com">DeviantArt</a>
-          <br>
-          <a href="https://www.metmuseum.org/art/metpublications/">Met Museum</a>
-          <a href="https://gallica.bnf.fr/accueil/fr/content/accueil-fr?mode=desktop">Gallica</a>
-          <br>
-          <a href="https://freesound.org/">Freesound</a>
-          <br>
-          <a href="https://redketchup.io/icon-converter">Icon Converter</a>
-          <a href="https://font.download/">Font.Download</a>
-        </p>
-
-		<p>
-          <br> <c>Team Reptile</c> <br>
-          <a href="https://lethal-league-blaze.thunderstore.io/">LLB Thunderstore</a>
-		  <a href="https://gamebanana.com/games/6746">Gamebanana</a>
-		  <br>
-          <a href="https://thunderstore.io/c/bomb-rush-cyberfunk/">BRC Thunderstore</a>
-          <a href="https://gamebanana.com/games/18955">Gamebanana</a>
-		  <br>
-          <a href="https://challonge.com/">Challonge</a>
-        </p>
-    </div>
-</div>
-
-</body>
+  </body>
 </html>
